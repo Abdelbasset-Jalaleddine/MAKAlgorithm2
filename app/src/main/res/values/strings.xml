@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MAK Algorithm</string>
+    <string name="tdf_idf"><u>TDF-IDF</u></string>
+    <string name="tdf"><u>TDF</u></string>
+    <string name="idf"><u>IDF</u></string>
+    <string name="set"><u>Set</u></string>
+    <string name="multiset"><u>MultiSet</u></string>
+</resources>

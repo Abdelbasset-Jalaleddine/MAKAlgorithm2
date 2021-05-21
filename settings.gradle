@@ -1,0 +1,2 @@
+rootProject.name = "MAK Algorithm"
+include ':app'

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color"
+    tools:context=".SearchActivity">
+    <ImageView
+        android:id="@+id/backImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_back"
+        android:onClick="backButton"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/samuh_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/samuh_logo"
+        app:tint="@color/main_green" />
+    <ImageView
+        android:id="@+id/samuh_logo"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/ic_neural"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TableRow
+        android:id="@+id/row_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#39486E"
+        android:gravity="center_vertical"
+        android:background="@drawable/ic_rectangle_closed"
+        app:layout_constraintTop_toBottomOf="@id/samuh_logo"
+        app:layout_constraintStart_toStartOf="@id/backImageView"
+        android:paddingTop="5dp"
+        android:layout_marginTop="10dp"
+        >
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="Search Here"
+            android:textColorHint="@color/white"
+            android:layout_marginStart="20dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="14sp"
+            />
+        <ImageView
+            android:id="@+id/searchImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_icon"
+            android:layout_marginEnd="20dp"
+            />
+    </TableRow>
+    <TextView
+        android:id="@+id/results_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Results"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="20sp"
+        android:textColor="@color/main_green"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/row_search"
+        app:layout_constraintStart_toStartOf="@id/row_search" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/results_textView"
+        app:layout_constraintEnd_toEndOf="@id/row_search"
+        app:layout_constraintTop_toBottomOf="@id/results_textView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

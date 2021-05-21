@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main_constraint"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="@color/main_color"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/titleTextView"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/ic_neural"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+<ImageView
+    android:id="@+id/backImageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:src="@drawable/ic_search_icon"
+    android:onClick="search"
+    android:padding="10dp"
+    app:layout_constraintBottom_toBottomOf="@id/titleTextView"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@id/titleTextView"
+    app:tint="@color/main_green" />
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compare Mode"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <TableRow
+        android:id="@+id/row_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#39486E"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:background="@drawable/ic_rectangle_closed"
+        app:layout_constraintTop_toBottomOf="@id/switchMode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingTop="5dp"
+        android:layout_marginTop="10dp"
+        >
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="Search Here"
+            android:textColorHint="@color/white"
+            android:layout_marginStart="20dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="14sp"
+            />
+        <ImageView
+            android:id="@+id/searchImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_icon"
+            android:layout_marginEnd="20dp"
+            />
+    </TableRow>
+
+    <EditText
+        android:id="@+id/firstString"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="First RNA Sequence"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:paddingStart="20dp"
+        android:background="@drawable/ic_rectangle_closed"
+        android:textColorHint="@color/main_green"
+        app:layout_constraintTop_toBottomOf="@id/switchMode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/secondString"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Second RNA Sequence"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/ic_rectangle_closed"
+        android:paddingStart="20dp"
+        android:textSize="20sp"
+        android:layout_marginEnd="20dp"
+        android:textColorHint="@color/main_green"
+        app:layout_constraintTop_toBottomOf="@id/firstString"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/edit_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_rectangle_closed"
+        android:backgroundTint="@color/main_account_color"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center_vertical"
+        android:onClick="open_edit"
+
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="Edit Distance"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondString"
+        app:layout_constraintVertical_bias="0.0" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/opened_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/ic_rectangle_opened"
+        android:backgroundTint="@color/main_account_color"
+        android:visibility="gone"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondString">
+
+        <TextView
+            android:id="@+id/green_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:onClick="close_edit"
+            android:text="Edit Distance"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/main_green"
+            android:textSize="16sp"
+            app:drawableEndCompat="@drawable/ic_arrow_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/editRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Distance"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/green_edit"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <RadioButton
+            android:id="@+id/similarityRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Similarity"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/editRadio"
+            app:layout_constraintTop_toBottomOf="@id/green_edit"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/set_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_rectangle_closed"
+        android:backgroundTint="@color/main_account_color"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center_vertical"
+        android:onClick="open_set"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="Set Based"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_textView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/opened_set"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/ic_rectangle_opened"
+        android:backgroundTint="@color/main_account_color"
+        android:visibility="gone"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondString">
+
+        <TextView
+            android:id="@+id/green_set"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:onClick="close_set"
+            android:text="Set Based"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/main_green"
+            android:textSize="16sp"
+            app:drawableEndCompat="@drawable/ic_arrow_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/setRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/set"
+            android:textColor="@color/main_green"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_semibolditalic"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/green_set"
+            />
+
+        <RadioButton
+            android:id="@+id/setMultiRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/multiset"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibolditalic"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toStartOf="@id/intersectionMultiRadio"
+            app:layout_constraintTop_toBottomOf="@id/green_set"
+            />
+
+        <RadioButton
+            android:id="@+id/jaccardRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jaccard"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/setRadio"
+            />
+
+        <RadioButton
+            android:id="@+id/jaccardMultiRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MultiJaccard"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toStartOf="@id/intersectionMultiRadio"
+            app:layout_constraintTop_toBottomOf="@id/setMultiRadio"
+            />
+
+        <RadioButton
+            android:id="@+id/diceRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dice"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/main_green"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jaccardRadio"
+            />
+
+        <RadioButton
+            android:id="@+id/diceMultiRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MultiDice"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toStartOf="@id/intersectionMultiRadio"
+            app:layout_constraintTop_toBottomOf="@id/jaccardMultiRadio"
+            />
+        <RadioButton
+            android:id="@+id/intersectionRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Intersection"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/diceRadio"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <RadioButton
+            android:id="@+id/intersectionMultiRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MultiIntersection"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/intersectionRadio"
+            app:layout_constraintTop_toBottomOf="@id/diceMultiRadio"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/vector_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_rectangle_closed"
+        android:backgroundTint="@color/main_account_color"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center_vertical"
+        android:onClick="open_vector"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="Vector Based"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/set_textView"
+        app:layout_constraintVertical_bias="0.0" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/opened_vector"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/ic_rectangle_opened"
+        android:backgroundTint="@color/main_account_color"
+        android:visibility="gone"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/set_textView">
+
+        <TextView
+            android:id="@+id/vector_green"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:onClick="close_vector"
+            android:text="Vector Based"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/main_green"
+            android:textSize="16sp"
+            app:drawableEndCompat="@drawable/ic_arrow_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/IDFRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idf"
+            android:textColor="@color/main_green"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_semibolditalic"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vector_green"
+            />
+
+        <RadioButton
+            android:id="@+id/TDFRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tdf"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibolditalic"
+            app:layout_constraintStart_toEndOf="@id/IDFRadio"
+            app:layout_constraintTop_toTopOf="@id/IDFRadio"
+            app:layout_constraintBottom_toBottomOf="@id/IDFRadio"
+            app:layout_constraintEnd_toStartOf="@id/IDFTDFRadio"
+            />
+
+        <RadioButton
+            android:id="@+id/IDFTDFRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tdf_idf"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibolditalic"
+            app:layout_constraintTop_toTopOf="@id/TDFRadio"
+            app:layout_constraintBottom_toBottomOf="@id/TDFRadio"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <RadioButton
+            android:id="@+id/cosineVectorRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cosine"
+            android:textColor="@color/main_green"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/IDFTDFRadio"
+            />
+
+        <RadioButton
+            android:id="@+id/pearsonVectorRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pearson"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toStartOf="@id/manhattanVectorRadio"
+            app:layout_constraintTop_toBottomOf="@id/IDFTDFRadio"
+
+            />
+
+        <RadioButton
+            android:id="@+id/euclidianVectorRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Euclidian"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cosineVectorRadio"
+
+            />
+
+        <RadioButton
+            android:id="@+id/manhattanVectorRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manhattan"
+            android:textSize="14sp"
+            android:textColor="@color/main_green"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toEndOf="@id/euclidianVectorRadio"
+            app:layout_constraintTop_toBottomOf="@id/pearsonVectorRadio"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+
+        <RadioButton
+            android:id="@+id/tanimotoVectorRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanimoto"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/main_green"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/euclidianVectorRadio"
+
+            />
+
+        <RadioButton
+            android:id="@+id/diceVectorRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dice"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/main_green"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toStartOf="@id/manhattanVectorRadio"
+            app:layout_constraintTop_toBottomOf="@id/manhattanVectorRadio"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/runButton"
+        android:onClick="runEverything"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Run"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/ic_group_background_button"
+        app:layout_constraintTop_toBottomOf="@id/vector_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
